@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './component/chatStyle.css';
+import './style.css';
 import { getDatabase, ref, push, set, onChildAdded } from "firebase/database";
-import SendButton from './component/SendButton';
-
+import SendButton from './SendButton';
 const Chat = () => {
   const [name, setName] = useState('')
   const [msg, setMsg] = useState('')
@@ -19,21 +18,24 @@ const Chat = () => {
     });
     setMsg("")
   };
+
   useEffect(() => {
     onChildAdded(chatListRef, (data) => {
       setChats(chats => [...chats, data.val()])
+      // calling msg scrolling function 
       setTimeout(() => {
         updateHeight();
       }, 100);
     });
   }, []);
-  // message scrolling setting 
+  // message scrolling setting
   const updateHeight = () => {
     let e = document.getElementById('chat');
     if (e) {
       e.scrollTop = e.scrollHeight;
     }
   };
+
   return (
     <>
       <div className='setting-padding'>
@@ -45,7 +47,7 @@ const Chat = () => {
 
         {name ? <div>
           <h2>User: {name}</h2>
-          <div id='chat' className="chat-container">
+          <div id='chat' className="chatContainer">
             {chats.map((c, i) => (
               <div key={i} className={`container ${c.name === name ? 'me' : ''} `}>
                 <p className='chatBox'>
