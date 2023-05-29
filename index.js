@@ -2,20 +2,23 @@ import React from 'react';
 import { createRoot } from 'react-dom/client'
 import App from './src/App';
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAHA7DgPWvSz8FAgNrHZYshgc9Ou8NRWRU",
-  authDomain: "react-chat-app-cb74e.firebaseapp.com",
-  databaseURL: "https://react-chat-app-cb74e-default-rtdb.firebaseio.com",
-  projectId: "react-chat-app-cb74e",
-  storageBucket: "react-chat-app-cb74e.appspot.com",
-  messagingSenderId: "952520915220",
-  appId: "1:952520915220:web:df0037e1e015d7f32bea01"
+  apiKey: "AIzaSyDsQSqGE1JS3_AgXBAmjkJUTQuN05GY_1M",
+  authDomain: "chat-app-a3462.firebaseapp.com",
+  databaseURL: "https://chat-app-a3462-default-rtdb.firebaseio.com",
+  projectId: "chat-app-a3462",
+  storageBucket: "chat-app-a3462.appspot.com",
+  messagingSenderId: "525283744964",
+  appId: "1:525283744964:web:78c7b87b1c6d9335917d91",
+  measurementId: "G-5Y53MJW7TV"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const container = document.getElementById('root');
 const root = createRoot(container);
